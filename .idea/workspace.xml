@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="233cc379-9c89-4c88-b7de-5d2ab701fb4e" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/Images/Mock_UA--W00001--P00001--Z00000--T00000--DAPI.tif" beforeDir="false" afterPath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00001--Z00000--T00000--DAPI.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/Mock_UA--W00001--P00001--Z00000--T00000--FITC.tif" beforeDir="false" afterPath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00001--Z00000--T00000--FITC.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/Mock_UA--W00001--P00001--Z00000--T00000--Trans.tif" beforeDir="false" afterPath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00001--Z00000--T00000--Trans.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/Mock_UA--W00001--P00002--Z00000--T00000--DAPI.tif" beforeDir="false" afterPath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00002--Z00000--T00000--DAPI.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/Mock_UA--W00001--P00002--Z00000--T00000--FITC.tif" beforeDir="false" afterPath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00002--Z00000--T00000--FITC.tif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Images/Mock_UA--W00001--P00002--Z00000--T00000--Trans.tif" beforeDir="false" afterPath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00002--Z00000--T00000--Trans.tif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Scripts/CellSegmentation.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/WholeCellSegmentation.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/WholeCellSegmentation.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,14 +16,22 @@
   </component>
   <component name="JupyterTrust" id="cdf6fa61-bd02-40cc-a2fb-7322d13be455" />
   <component name="ProjectId" id="1iaSExOF46c52JJlTHukxinV89T" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\GitHub\WholeCellSegmentation\Input" />
+    </key>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -36,11 +41,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1602144102115</updated>
-      <workItem from="1602144117689" duration="412000" />
+      <workItem from="1602144117689" duration="793000" />
+      <workItem from="1602146348078" duration="301000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
 </project>
