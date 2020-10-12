@@ -124,10 +124,10 @@ class Utilty():
 
         img_out = cv2.merge((img_b, img_g, img_r))
     # validation
-        equ_b = cv2.equalizeHist(b)
-        equ_g = cv2.equalizeHist(g)
-        equ_r = cv2.equalizeHist(r)
-        equ = cv2.merge((equ_b, equ_g, equ_r))
+       #equ_b = cv2.equalizeHist(b)
+       #equ_g = cv2.equalizeHist(g)
+       #equ_r = cv2.equalizeHist(r)
+       #equ = cv2.merge((equ_b, equ_g, equ_r))
         #print(equ)
         #cv2.imwrite('output_name.png', equ)
         return img_out
