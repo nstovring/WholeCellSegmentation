@@ -1,100 +1,42 @@
+
+import numpy as np
 import cv2
-import numpy as np
-
-from PIL import Image, ImageEnhance
-import numpy as np
-from PIL import ImageFilter
-import colorsys
+import  matplotlib.pyplot as plt
 import os
-from skimage.filters import gabor, gaussian
-from IPython.display import display
-from matplotlib.pyplot import imshow
-from pywt import dwt2
-import pickle
-from sklearn.decomposition import PCA
-from sklearn.preprocessing import StandardScaler
 
-class Gabor():
-    def gabor(self,img_in):
-        image = Image.open(img_in).convert('RGB')
-        image_size = image.size
-        print(image_size)
-        pixels = np.asarray(image, dtype="int32")
-        energy_density = Gabor.get_energy_density(pixels)
-        # get fixed bandwidth using energy density
-        bandwidth = abs(0.4 * energy_density - 0.5)
+root_dir = os.path.abspath("../")
+class Utility2():
+    def __init__(self):
+        print("in init")
+    def load_and_process_image(self, path):
+        images = []
+        smoothImages = []
 
-        magnitude_dict = {}
-        for theta in np.arange(0, np.pi, np.pi / 6):
-            for freq in np.array([1.4142135623730951, 2.414213562373095, 2.8284271247461903, 3.414213562373095]):
-                filt_real, filt_imag = gabor(image, frequency=freq, bandwidth=bandwidth, theta=theta)
-                # get magnitude response
-                magnitude = Gabor.get_magnitude([filt_real, filt_imag])
-                ''' uncomment the lines below to visualize each magnitude response '''
-                # im = Image.fromarray(magnitude.reshape(image_size)).convert('L')
-                # display(im)
-                magnitude_dict[(theta, freq)] = magnitude.reshape(image.size)
-        # apply gaussian smoothing
-        gabor_mag = []
-        for key, values in magnitude_dict.items():
-            # the value of sigma is chosen to be half of the applied frequency
-            sigma = 0.5 * key[1]
-            smoothed = gaussian(values, sigma=sigma)
-            gabor_mag.append(smoothed)
-        gabor_mag = np.array(gabor_mag)
+        #load image
+        img = cv2.imread(root_dir+path)
+        images.append(img)
+        # histogram equalization on image
+        #img_eq = histogram_equalization(img)
+        #final_image = cv2.hconcat([img,img_eq])
+        #images.append(img_eq)
+        # apply gabor filters on equalized image
+        filters, filterValues = self.generate_gabor_filters()
 
-        # reshape so that we can apply PCA
-        value = gabor_mag.reshape((-1, image_size[0] * image_size[1]))
+        for x in range(len(filters)):
+            fimg = cv2.filter2D(img,cv2.CV_8UC3,filters[x]) #img_eq
 
-        # get dimensionally reduced image
-        pcaed = Gabor.apply_pca(value.T).astype(np.uint8)
-        result = pcaed.reshape((image_size[0], image_size[1]))
-        result_im = Image.fromarray(result, mode='L')
-        display(result_im)
+            n=13; #where n*n is the size of filter
+            smoothed_image = cv2.medianBlur(fimg, n)
+            smoothImages.append(smoothed_image)
 
-    def get_image_energy(pixels):
-        """
-        :param pixels: image array
-        :return: Energy content of the image
-        """
-        _, (cH, cV, cD) = dwt2(pixels.T, 'db1')
-        energy = (cH ** 2 + cV ** 2 + cD ** 2).sum() / pixels.size
-        return energy
+            mg_eq = self.histogram_equalization(smoothed_image)
+            images.append(mg_eq)
+            #final_image= cv2.hconcat([final_image,fimg])
 
-    def get_energy_density(pixels):
-        """
-        :param pixels: image array
-        :param size: size of the image
-        :return: Energy density of the image based on its size
-        """
-        energy = Gabor.get_image_energy(pixels)
-        energy_density = energy / (pixels.shape[0] * pixels.shape[1])
-        return round(energy_density * 100, 5)  # multiplying by 100 because the values are very small
-
-    def get_magnitude(response):
-        """
-        :param response: original gabor response in the form: [real_part, imag_part]
-        :return: the magnitude response for the input gabor response
-        """
-        magnitude = np.array([np.sqrt(response[0][i][j] ** 2 + response[1][i][j] ** 2)
-                              for i in range(len(response[0])) for j in range(len(response[0][i]))])
-        return magnitude
-
-    def apply_pca(array):
-        """
-        :param array: array of shape pXd
-        :return: reduced and transformed array of shape dX1
-        """
-        # apply dimensionality reduction to the input array
-        standardized_data = StandardScaler().fit_transform(array)
-        pca = PCA(n_components=1)
-        pca.fit(standardized_data)
-        transformed_data = pca.transform(standardized_data)
-        return transformed_data
-
-class Utilty():
-    def histogram_equalization(img_in):
-    # segregate color streams
+        final_image = self.h_concatenate_images(images)
+        return images, smoothImages, final_image, filterValues
+    def histogram_equalization(self, img_in):
+        # segregate color streams
         #image = cv2.imread(img_in)
         #b,g, r = img_in
         b,g,r =  cv2.split(img_in)
@@ -131,3 +73,82 @@ class Utilty():
         #print(equ)
         #cv2.imwrite('output_name.png', equ)
         return img_out
+        #cv2.imshow(str(img),img)
+        #cv2.waitKey(0)
+        #cv2.destroyAllWindows()
+    def generate_gabor_filters(self):
+
+        k = (50,50)
+        sigma = 3
+        theta = 1*np.pi/4
+        lamda = 1*np.pi/4  #1/4 works best for angled.
+        #gamma = .78 #.5 and .78 yields results
+        gammArr = [.1,0.25,0.5,1.0]
+        phi = 0
+        filters = []
+        values = []
+        for x in range(1,4,2):
+            theta = x*np.pi/4
+            for y in gammArr:
+                gamma = y
+                kernel = cv2.getGaborKernel(k, sigma, theta, lamda, gamma, phi, ktype=cv2.CV_32F)
+                #kernel = cv2.resize(kernel, (32,32))
+                value = ("Sigma", sigma, "Theta", theta, "Gamma", gamma)
+                values.append(value)
+                filters.append(kernel)
+                print(sigma,theta, gamma)
+
+        return filters, values
+    def h_concatenate_images(self,imgArr):
+        _img = imgArr[0]
+        for x in range(len(imgArr)-1):
+            _img = cv2.hconcat([_img,imgArr[x+1]])
+        return _img
+    def v_concatenate_images(self,imgArr):
+        _img = imgArr[0]
+        for x in range(len(imgArr)-1):
+            _img = cv2.vconcat([_img,imgArr[x+1]])
+        return _img
+    def pairs_from_array(self,arr1,arr2):
+        out=[]
+        arr1 = arr1[1:]
+        for x in range(len(arr1)):
+            im1 = arr1[x]
+            im2 = arr2[x]
+            _img = cv2.hconcat([im1,im2])
+            out.append(_img)
+        return out
+    def show_filters(self):
+        filters = self.generate_gabor_filters()
+        return self.h_concatenate_images(filters)
+
+    def Test(self):
+        print("HUH?")
+
+#util = Utility2()
+#
+#img_arr, smt_arr, f_img, f_values = util.load_and_process_image(util, "/Input/Images/--W00001--P00004--Z00000--T00000--BFP.tif")
+#
+#pairs = util.pairs_from_array(util,img_arr, smt_arr)
+#
+#for x in range(len(pairs)):
+#    cv2.imshow("Pair" +  str(f_values[x]) , pairs[x])
+#    cv2.imwrite("Pair_eq" + str(f_values[x]) + ".jpeg", pairs[x])
+
+#cv2.imwrite("filtertest_01_noFilter.jpg",  f_img)
+#FINAL_IMAGE = cv2.vconcat([f_img,f_img1])
+#FINAL_IMAGE = cv2.vconcat([FINAL_IMAGE,f_img2])
+#FINAL_IMAGE = cv2.vconcat([FINAL_IMAGE,f_img3])
+
+#def show_filters():
+ #   filters = generate_gabor_filters()
+#    return h_concatenate_images(filters)
+
+
+
+
+#cv2.imshow("Filters",cv2.resize(show_filters(),(800,100)))
+#cv2.imshow(str(f_img),cv2.resize(f_img,(1000,100)))
+#cv2.waitKey(0)
+#cv2.destroyAllWindows()
+#
