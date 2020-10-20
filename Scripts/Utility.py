@@ -19,29 +19,25 @@ class Utility2():
         return images
 
 
+    def processImage(self, image):
+        eqImages = []
+        smoothImages = []
 
-    #def processImages(self, images):
-#
-#
-    #def processImage(self, image):
-    #    eqImages = []
-    #    smoothImages = []
-#
-    #    filters, filterValues = self.generate_gabor_filters()
-#
-    #    for x in range(len(filters)):
-    #        fimg = cv2.filter2D(image, cv2.CV_8UC3, filters[x])  # img_eq
-#
-    #        n = 13;  # where n*n is the size of filter
-    #        smoothed_image = cv2.medianBlur(fimg, n)
-    #        smoothImages.append(smoothed_image)
-#
-    #        mg_eq = self.histogram_equalization(smoothed_image)
-    #        eqImages.append(mg_eq)
-    #        # final_image= cv2.hconcat([final_image,fimg])
-#
-    #    final_image = self.h_concatenate_images(images)
-    #    return images, smoothImages, final_image, filterValues
+        filters, filterValues = self.generate_gabor_filters()
+
+        for x in range(len(filters)):
+            fimg = cv2.filter2D(image, cv2.CV_8UC3, filters[x])  # img_eq
+
+            n = 13;  # where n*n is the size of filter
+            smoothed_image = cv2.medianBlur(fimg, n)
+            smoothImages.append(smoothed_image)
+
+            mg_eq = self.histogram_equalization(smoothed_image)
+            eqImages.append(mg_eq)
+            # final_image= cv2.hconcat([final_image,fimg])
+
+        final_image = self.h_concatenate_images(eqImages)
+        return eqImages, smoothImages, final_image, filterValues
 
     def load_and_process_image(self, path):
         images = []
@@ -131,7 +127,7 @@ class Utility2():
                 value = ("Sigma", sigma, "Theta", theta, "Gamma", gamma)
                 values.append(value)
                 filters.append(kernel)
-                print(sigma,theta, gamma)
+                #print(sigma,theta, gamma)
 
         return filters, values
     def h_concatenate_images(self,imgArr):

@@ -29,6 +29,7 @@
     <list default="true" id="233cc379-9c89-4c88-b7de-5d2ab701fb4e" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/Scripts/Pre-Processing-Nikolaj.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00002--Z00000--T00000--Trans.tif" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/PreProcessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/PreProcessing.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Utility.py" afterDir="false" />
     </list>
@@ -148,6 +149,14 @@
       <workItem from="1603093075456" duration="11957000" />
       <workItem from="1603181022751" duration="3067000" />
     </task>
+    <task id="LOCAL-00001" summary="Updated Utility.py">
+      <created>1603188509928</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1603188509928</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -177,6 +186,10 @@
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Updated Utility.py" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated Utility.py" />
+  </component>
   <component name="WindowStateProjectService">
     <state x="395" y="90" key="#Inspections" timestamp="1602234029799">
       <screen x="0" y="0" width="1536" height="824" />
@@ -186,6 +199,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1602233994002" />
+    <state x="585" y="88" key="CommitChangelistDialog2" timestamp="1603188508971">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1603188508971" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1602242455118">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
