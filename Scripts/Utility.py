@@ -8,6 +8,41 @@ root_dir = os.path.abspath("../")
 class Utility2():
     def __init__(self):
         print("in init")
+
+    def loadImages(self, path):
+
+        images = []
+        imagePaths = os.listdir(".."+path)
+        for x in imagePaths:
+            img = cv2.imread(root_dir + path + "/" + x)
+            images.append(img)
+        return images
+
+
+
+    #def processImages(self, images):
+#
+#
+    #def processImage(self, image):
+    #    eqImages = []
+    #    smoothImages = []
+#
+    #    filters, filterValues = self.generate_gabor_filters()
+#
+    #    for x in range(len(filters)):
+    #        fimg = cv2.filter2D(image, cv2.CV_8UC3, filters[x])  # img_eq
+#
+    #        n = 13;  # where n*n is the size of filter
+    #        smoothed_image = cv2.medianBlur(fimg, n)
+    #        smoothImages.append(smoothed_image)
+#
+    #        mg_eq = self.histogram_equalization(smoothed_image)
+    #        eqImages.append(mg_eq)
+    #        # final_image= cv2.hconcat([final_image,fimg])
+#
+    #    final_image = self.h_concatenate_images(images)
+    #    return images, smoothImages, final_image, filterValues
+
     def load_and_process_image(self, path):
         images = []
         smoothImages = []
@@ -140,3 +175,4 @@ class Utility2():
                     cv2.imshow(str(x), images[x])
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
