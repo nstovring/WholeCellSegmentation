@@ -125,30 +125,18 @@ class Utility2():
     def Test(self):
         print("HUH?")
 
-#util = Utility2()
-#
-#img_arr, smt_arr, f_img, f_values = util.load_and_process_image(util, "/Input/Images/--W00001--P00004--Z00000--T00000--BFP.tif")
-#
-#pairs = util.pairs_from_array(util,img_arr, smt_arr)
-#
-#for x in range(len(pairs)):
-#    cv2.imshow("Pair" +  str(f_values[x]) , pairs[x])
-#    cv2.imwrite("Pair_eq" + str(f_values[x]) + ".jpeg", pairs[x])
-
-#cv2.imwrite("filtertest_01_noFilter.jpg",  f_img)
-#FINAL_IMAGE = cv2.vconcat([f_img,f_img1])
-#FINAL_IMAGE = cv2.vconcat([FINAL_IMAGE,f_img2])
-#FINAL_IMAGE = cv2.vconcat([FINAL_IMAGE,f_img3])
-
-#def show_filters():
- #   filters = generate_gabor_filters()
-#    return h_concatenate_images(filters)
-
-
-
-
-#cv2.imshow("Filters",cv2.resize(show_filters(),(800,100)))
-#cv2.imshow(str(f_img),cv2.resize(f_img,(1000,100)))
-#cv2.waitKey(0)
-#cv2.destroyAllWindows()
-#
+    def showImages(self, images, titles=None, scale=None):
+        if titles is not None:
+            for x in range(len(titles)):
+                if scale is not None:
+                    cv2.imshow(titles[x], cv2.resize(images[x], scale))
+                else:
+                    cv2.imshow(titles[x], images[x])
+        else:
+            for x in range(len(images)):
+                if scale is not None:
+                    cv2.imshow(str(x), cv2.resize(images[x], scale))
+                else:
+                    cv2.imshow(str(x), images[x])
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
