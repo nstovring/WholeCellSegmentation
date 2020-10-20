@@ -172,3 +172,31 @@ class Utility2():
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
+    def writeImages(self, images, prefix=None, titles=None, scale=None, path=None):
+        if path is not None:
+            os.chdir(path)
+
+        if prefix is None:
+            prefix = ""
+
+        if titles is not None:
+            for x in range(len(titles)):
+                if scale is not None:
+                    cv2.imwrite(prefix + titles[x] + ".jpg", cv2.resize(images[x], scale))
+                else:
+                    cv2.imwrite(prefix + titles[x] + ".jpg", images[x])
+        else:
+            for x in range(len(images)):
+                if scale is not None:
+                    cv2.imwrite(prefix + str(x) + ".jpg", cv2.resize(images[x], scale))
+                else:
+                    cv2.imwrite(prefix + str(x) + ".jpg", images[x])
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
+    def mergeImages(self, images, index1, index2, ratio):
+        output = []
+        for x in images:
+            out = cv2.addWeighted(images[index1], ratio, images[index2], ratio, 0)
+            output.append(out)
+        return output
