@@ -49,9 +49,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="cdf6fa61-bd02-40cc-a2fb-7322d13be455">
+  <component name="JupyterTrust" id="d4146602-8708-433b-a057-740f9ff014a3">
     <option name="files">
-      <option value="Scripts\Pre-Processing-Nikolaj.ipynb" />
+      <option value="Scripts\GaborFiltering.ipynb" />
+      <option value="Scripts\PhaseFluorescentComparison.ipynb" />
+      <option value="Scripts\PreProcessing.ipynb" />
+      <option value="Scripts\TestUtils.ipynb" />
     </option>
   </component>
   <component name="ProjectId" id="1iaSExOF46c52JJlTHukxinV89T" />
@@ -63,13 +66,15 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/DokumentationPics" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/Scripts/TestImages" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Jeppe\Documents\School\Med9\WholeCellSegmentation\Scripts\TestImages" />
+      <recent name="C:\Users\Jeppe\Documents\School\Med9\WholeCellSegmentation\Scripts\OtherTestImages" />
       <recent name="C:\Users\Jeppe\Documents\School\Med9\WholeCellSegmentation\DokumentationPics" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -147,7 +152,14 @@
       <workItem from="1602834154637" duration="1751000" />
       <workItem from="1602836026805" duration="10465000" />
       <workItem from="1603093075456" duration="11957000" />
-      <workItem from="1603181022751" duration="6669000" />
+      <workItem from="1603181022751" duration="7449000" />
+      <workItem from="1603193821137" duration="1890000" />
+      <workItem from="1603198564046" duration="595000" />
+      <workItem from="1603272566861" duration="545000" />
+      <workItem from="1603375750854" duration="3231000" />
+      <workItem from="1603379499124" duration="123000" />
+      <workItem from="1603461113484" duration="2111000" />
+      <workItem from="1603699597656" duration="3183000" />
     </task>
     <task id="LOCAL-00001" summary="Updated Utility.py">
       <created>1603188509928</created>
