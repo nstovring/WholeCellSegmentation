@@ -19,29 +19,25 @@ class Utility2():
         return images
 
 
+    def processImage(self, image):
+        eqImages = []
+        smoothImages = []
 
-    #def processImages(self, images):
-#
-#
-    #def processImage(self, image):
-    #    eqImages = []
-    #    smoothImages = []
-#
-    #    filters, filterValues = self.generate_gabor_filters()
-#
-    #    for x in range(len(filters)):
-    #        fimg = cv2.filter2D(image, cv2.CV_8UC3, filters[x])  # img_eq
-#
-    #        n = 13;  # where n*n is the size of filter
-    #        smoothed_image = cv2.medianBlur(fimg, n)
-    #        smoothImages.append(smoothed_image)
-#
-    #        mg_eq = self.histogram_equalization(smoothed_image)
-    #        eqImages.append(mg_eq)
-    #        # final_image= cv2.hconcat([final_image,fimg])
-#
-    #    final_image = self.h_concatenate_images(images)
-    #    return images, smoothImages, final_image, filterValues
+        filters, filterValues = self.generate_gabor_filters()
+
+        for x in range(len(filters)):
+            fimg = cv2.filter2D(image, cv2.CV_8UC3, filters[x])  # img_eq
+
+            n = 13;  # where n*n is the size of filter
+            smoothed_image = cv2.medianBlur(fimg, n)
+            smoothImages.append(smoothed_image)
+
+            mg_eq = self.histogram_equalization(smoothed_image)
+            eqImages.append(mg_eq)
+            # final_image= cv2.hconcat([final_image,fimg])
+
+        final_image = self.h_concatenate_images(eqImages)
+        return eqImages, smoothImages, final_image, filterValues
 
     def load_and_process_image(self, path):
         images = []
@@ -131,7 +127,7 @@ class Utility2():
                 value = ("Sigma", sigma, "Theta", theta, "Gamma", gamma)
                 values.append(value)
                 filters.append(kernel)
-                print(sigma,theta, gamma)
+                #print(sigma,theta, gamma)
 
         return filters, values
     def h_concatenate_images(self,imgArr):
@@ -175,4 +171,122 @@ class Utility2():
                     cv2.imshow(str(x), images[x])
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+    def writeImages(self, images, prefix=None, titles=None, scale=None, path=None):
+        if path is not None:
+            os.chdir(path)
+
+        if prefix is None:
+            prefix = ""
+
+        if titles is not None:
+            for x in range(len(titles)):
+                if scale is not None:
+                    cv2.imwrite(prefix + titles[x] + ".jpg", cv2.resize(images[x], scale))
+                else:
+                    cv2.imwrite(prefix + titles[x] + ".jpg", images[x])
+        else:
+            for x in range(len(images)):
+                if scale is not None:
+                    cv2.imwrite(prefix + str(x) + ".jpg", cv2.resize(images[x], scale))
+                else:
+                    cv2.imwrite(prefix + str(x) + ".jpg", images[x])
+        cv2.waitKey(0)
+        cv2.destroyAllWindows()
+
+    def mergeImages(self, images, index1, index2, ratio):
+        output = []
+        for x in images:
+            out = cv2.addWeighted(images[index1], ratio, images[index2], ratio, 0)
+            output.append(out)
+        return output
+
+    def morphologyImages(self, images, kernel=None, iterations=None):
+        i = 15
+        if iterations is not None:
+            i = iterations
+
+        k = np.ones((3, 3), np.uint8)
+        if kernel is not None:
+            k = kernel
+
+        output = []
+
+        for x in images:
+            out = cv2.morphologyEx(x, cv2.MORPH_OPEN, k, iterations=i)
+            output.append(out)
+
+        return output
+
+    def dilateImages(self, images, kernel=None, iterations=None):
+        i = 10
+        if iterations is not None:
+            i = iterations
+
+        k = np.ones((3, 3), np.uint8)
+        if kernel is not None:
+            k = kernel
+
+        output = []
+
+        for x in images:
+            out = cv2.dilate(x, k, iterations=i)
+            output.append(out)
+
+        return output
+
+    def grayscaleImages(self, images):
+        output = []
+
+        for x in images:
+            out = cv2.cvtColor(x, cv2.COLOR_BGR2GRAY)
+            output.append(out)
+
+        return output
+
+    def thresholdImages(self, images, invert=None):
+        thresh = []
+        output = []
+        for x in images:
+            ret, thresh = cv2.threshold(x, 0, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+            if invert is not None:
+                thresh = 255 - thresh
+            output.append(thresh)
+
+        return output
+
+    def waterShedImages(self, images):
+        output = []
+        markersArr = []
+
+        thresholded = self.thresholdImages(images)
+
+
+        openings = self.morphologyImages(thresholded)
+
+        sure_bgs = self.dilateImages(openings)
+
+
+        for x in range(len(images)):
+            # Finding sure foreground area
+            dist_transform = cv2.distanceTransform(openings[x], cv2.DIST_L2, 5)
+            dist_transform = cv2.normalize(dist_transform, dist_transform, 0, 1.0, cv2.NORM_MINMAX)
+            ret, sure_fg = cv2.threshold(dist_transform, 0.1 * dist_transform.max(), 255, 0)
+            # Finding unknown region
+            sure_fg = np.uint8(sure_fg)
+            unknown = cv2.subtract(sure_bgs[x], sure_fg)
+
+            ret, markers = cv2.connectedComponents(sure_fg)
+            # Add one to all labels so that sure background is not 0, but 1
+            markers = markers + 1
+            # Now, mark the region of unknown with zero
+            markers[unknown == 255] = 0
+
+            markers = cv2.watershed(images[x], markers)
+            markersArr.append(markers)
+            images[x][markers == -1] = [255, 0, 0]
+            output.append(images[x])
+
+        return output, markersArr
+
 
