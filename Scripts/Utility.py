@@ -259,13 +259,13 @@ class Utility2():
         output = []
         markersArr = []
 
-        thresholded = self.thresholdImages(images)
-
+        grayscaled = self.grayscaleImages(images)
+        thresholded = self.thresholdImages(grayscaled)
 
         openings = self.morphologyImages(thresholded)
+        #ut.showImages(thresholded, scale=(500, 500))
 
         sure_bgs = self.dilateImages(openings)
-
 
         for x in range(len(images)):
             # Finding sure foreground area
@@ -289,4 +289,20 @@ class Utility2():
 
         return output, markersArr
 
+    def kmeansOutImages(self, images, kVal):
+        output = []
+        for x in images:
+            Z = x.reshape((-1,3))
+            # convert to np.float32
+            Z = np.float32(Z)
+            # define criteria, number of clusters(K) and apply kmeans()
+            criteria = (cv2.TERM_CRITERIA_EPS + cv2.TERM_CRITERIA_MAX_ITER, 10, 1.0)
+            K = kVal
+            ret, label, center = cv2.kmeans(Z, K, None, criteria, 10, cv2.KMEANS_RANDOM_CENTERS)
+            # Now convert back into uint8, and make original image
+            center = np.uint8(center)
+            res = center[label.flatten()]
+            res2 = res.reshape(x.shape)
+            output.append(res2)
+        return output
 
