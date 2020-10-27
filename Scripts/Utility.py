@@ -18,6 +18,22 @@ class Utility2():
             images.append(img)
         return images
 
+    #def loadImages(self, path):
+    #    transmitted = []
+    #    channels = []
+    #    imagePaths = os.listdir(".." + path)
+#
+    #    y = 0
+    #    for x in imagePaths:
+    #        img = cv2.imread(root_dir + path + "/" + x)
+    #        y += 1
+    #        if y is 5:
+    #            y = 0
+    #            transmitted.append(img)
+    #        else:
+    #            channels.append(img)
+#
+    #    return transmitted, channels
 
     def processImage(self, image):
         eqImages = []
@@ -209,9 +225,16 @@ class Utility2():
     def mergeImages(self, images, index1, index2, ratio):
         output = []
         for x in images:
-            out = cv2.addWeighted(images[index1], ratio, images[index2], ratio, 0)
+            out = cv2.addWeighted(x[index1], ratio, x[index2], ratio, 0)
             output.append(out)
         return output
+
+    def pairMerge(self, images):
+        output = images[0]
+        for x in range(len(images) - 1):
+            output = cv2.addWeighted(output, 0.5, images[x+1], 0.5, 0)
+        return output
+
 
     def morphologyImages(self, images, kernel=None, iterations=None):
         i = 15
@@ -256,11 +279,11 @@ class Utility2():
 
         return output
 
-    def thresholdImages(self, images, invert=None):
+    def thresholdImages(self, images, minval=0, maxval=255, invert=None):
         thresh = []
         output = []
         for x in images:
-            ret, thresh = cv2.threshold(x, 0, 255, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
+            ret, thresh = cv2.threshold(x, minval, maxval, cv2.THRESH_BINARY_INV+cv2.THRESH_OTSU)
             if invert is not None:
                 thresh = 255 - thresh
             output.append(thresh)
