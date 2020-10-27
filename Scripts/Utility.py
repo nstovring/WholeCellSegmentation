@@ -39,6 +39,18 @@ class Utility2():
         final_image = self.h_concatenate_images(eqImages)
         return eqImages, smoothImages, final_image, filterValues
 
+    def medianBlurImages(self, images, kernelSize=None):
+        output = []
+        n = 13
+        if kernelSize is not None:
+            n = kernelSize
+
+        for x in images:
+            out = cv2.medianBlur(x, n)
+            output.append(out)
+
+        return output
+
     def load_and_process_image(self, path):
         images = []
         smoothImages = []
