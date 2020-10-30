@@ -94,6 +94,17 @@ class Utility2():
 
         final_image = self.h_concatenate_images(images)
         return images, smoothImages, final_image, filterValues
+
+    def applyGaborOnImages(self, images):
+        output = []
+        filters, filterValues = self.generate_gabor_filters()
+
+        for x in range(len(images)):
+            for y in range(len(filters)):
+                _img = cv2.filter2D([x], cv2.CV_8UC3, filters[y])  # img_eq
+                output.append(_img)
+        return output
+
     def histogram_equalization(self, img_in):
         # segregate color streams
         #image = cv2.imread(img_in)
@@ -135,6 +146,14 @@ class Utility2():
         #cv2.imshow(str(img),img)
         #cv2.waitKey(0)
         #cv2.destroyAllWindows()
+
+    def histogramImages(self, images):
+        output = []
+        for x in range(len(images)):
+            _img = self.histogram_equalization(images[x])
+            output.append(_img)
+        return output
+
     def generate_gabor_filters(self):
 
         k = (50,50)
