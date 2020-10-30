@@ -47,8 +47,8 @@ class Utility2():
             n = 13;  # where n*n is the size of filter
             smoothed_image = cv2.medianBlur(fimg, n)
             smoothImages.append(smoothed_image)
-
             mg_eq = self.histogram_equalization(smoothed_image)
+
             eqImages.append(mg_eq)
             # final_image= cv2.hconcat([final_image,fimg])
 
@@ -290,12 +290,13 @@ class Utility2():
 
         return output
 
-    def waterShedImages(self, images):
+    def waterShedImages(self, images, processed=True):
         output = []
         markersArr = []
-
-        grayscaled = self.grayscaleImages(images)
-        thresholded = self.thresholdImages(grayscaled)
+        thresholded = images
+        if processed is False:
+            grayscaled = self.grayscaleImages(images)
+            thresholded = self.thresholdImages(grayscaled)
 
         openings = self.morphologyImages(thresholded)
         #ut.showImages(thresholded, scale=(500, 500))
