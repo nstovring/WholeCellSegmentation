@@ -158,6 +158,19 @@ class Utility2():
                 #print(sigma,theta, gamma)
 
         return filters, values
+
+    def gabor_filter_image(self, img):
+
+        f_img_arr =[]
+
+        filters, filterValues = self.generate_gabor_filters()
+
+        for x in range(len(filters)):
+            fimg = cv2.filter2D(img, cv2.CV_8UC3, filters[x])
+            f_img_arr.append(fimg)
+
+        return f_img_arr
+
     def h_concatenate_images(self,imgArr):
         _img = imgArr[0]
         for x in range(len(imgArr)-1):
@@ -180,9 +193,6 @@ class Utility2():
     def show_filters(self):
         filters, values = self.generate_gabor_filters()
         return self.h_concatenate_images(filters)
-
-    def Test(self):
-        print("HUH?")
 
     def showImages(self, images, titles=None, scale=None):
         if titles is not None:
