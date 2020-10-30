@@ -178,7 +178,7 @@ class Utility2():
             out.append(_img)
         return out
     def show_filters(self):
-        filters = self.generate_gabor_filters()
+        filters, values = self.generate_gabor_filters()
         return self.h_concatenate_images(filters)
 
     def Test(self):
