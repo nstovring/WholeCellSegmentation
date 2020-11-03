@@ -27,12 +27,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="233cc379-9c89-4c88-b7de-5d2ab701fb4e" name="Default Changelist" comment="Updated Utility.py">
-      <change afterPath="$PROJECT_DIR$/Scripts/Pre-Processing-Nikolaj.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Input/Images/Mock_UA--W00001--P00002--Z00000--T00000--Trans.tif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/MakeImages.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/MakeImages.ipynb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/PreProcessing.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/PreProcessing.ipynb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Scripts/Pre-Processing-Nikolaj.ipynb" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Pre-Processing-Nikolaj.ipynb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Scripts/Utility.py" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/Utility.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -51,15 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="d4146602-8708-433b-a057-740f9ff014a3">
-    <option name="files">
-      <option value="Scripts\GaborFiltering.ipynb" />
-      <option value="Scripts\MakeImages.ipynb" />
-      <option value="Scripts\PhaseFluorescentComparison.ipynb" />
-      <option value="Scripts\PreProcessing.ipynb" />
-      <option value="Scripts\TestUtils.ipynb" />
-    </option>
-  </component>
+  <component name="JupyterTrust" id="cdf6fa61-bd02-40cc-a2fb-7322d13be455" />
   <component name="ProjectId" id="1iaSExOF46c52JJlTHukxinV89T" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -233,6 +220,10 @@
     </state>
     <state x="468" y="0" key="CommitChangelistDialog2/0.0.1536.824@0.0.1536.824" timestamp="1604054637395" />
     <state x="585" y="88" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1603188508971" />
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog" timestamp="1604408360268">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="92" y="92" width="1736" height="856" key="DiffContextDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604408360268" />
     <state x="549" y="167" key="FileChooserDialogImpl" timestamp="1602242455118">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -257,6 +248,10 @@
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604055876570" />
     <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603971950846" />
+    <state x="184" y="86" key="MergeDialog" timestamp="1604408342803">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="184" y="86" key="MergeDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604408342803" />
     <state x="277" y="57" key="SettingsEditor" timestamp="1604054695834">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -279,6 +274,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602841315513" />
+    <state x="382" y="271" key="vcs.ApplyPatchDifferentiatedDialog" timestamp="1604408213076">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="382" y="271" key="vcs.ApplyPatchDifferentiatedDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1604408213076" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/WholeCellSegmentation$Utility.coverage" NAME="Utility Coverage Results" MODIFIED="1602845880758" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/Scripts" />

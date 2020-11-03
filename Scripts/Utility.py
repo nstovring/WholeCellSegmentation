@@ -88,6 +88,11 @@ class Utility2():
             smoothed_image = cv2.medianBlur(fimg, n)
             smoothImages.append(smoothed_image)
 
+            grayImg = self.grayscaleImages([smoothed_image])
+
+            clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+            mg_eq = clahe.apply(grayImg[0])
+
             mg_eq = self.histogram_equalization(smoothed_image)
             images.append(mg_eq)
             #final_image= cv2.hconcat([final_image,fimg])
@@ -202,10 +207,31 @@ class Utility2():
         return _img
     def pairs_from_array(self,arr1,arr2):
         out=[]
-        arr1 = arr1[1:]
+        #arr1 = arr1[1:]
+
+
+
+
         for x in range(len(arr1)):
             im1 = arr1[x]
             im2 = arr2[x]
+
+            #height = im1.shape[0]
+            #width = im1.shape[1]
+#
+            ## Cut the image in half
+            #width_cutoff = width // 2
+            #s1 = im1[:, :width_cutoff]
+            #s2 = im1[:, width_cutoff:]
+#
+            #height = im2.shape[0]
+            #width = im2.shape[1]
+#
+            ## Cut the image in half
+            #width_cutoff = width // 2
+            #s2 = im2[:, :width_cutoff]
+            ##s2 = im2[:, width_cutoff:]
+
             _img = cv2.hconcat([im1,im2])
             out.append(_img)
         return out
@@ -229,7 +255,8 @@ class Utility2():
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
-    def writeImages(self, images, prefix=None, titles=None, scale=None, path=None):
+    def writeImages(self, images, prefix=None, titles=None, scale=None, path=None, filetype=".jpg"):
+
         if path is not None:
             os.chdir(path)
 
@@ -239,15 +266,15 @@ class Utility2():
         if titles is not None:
             for x in range(len(titles)):
                 if scale is not None:
-                    cv2.imwrite(prefix + titles[x] + ".jpg", cv2.resize(images[x], scale))
+                    cv2.imwrite(prefix + titles[x] + filetype, cv2.resize(images[x], scale))
                 else:
-                    cv2.imwrite(prefix + titles[x] + ".jpg", images[x])
+                    cv2.imwrite(prefix + titles[x] + filetype, images[x])
         else:
             for x in range(len(images)):
                 if scale is not None:
-                    cv2.imwrite(prefix + str(x) + ".jpg", cv2.resize(images[x], scale))
+                    cv2.imwrite(prefix + str(x) + filetype, cv2.resize(images[x], scale))
                 else:
-                    cv2.imwrite(prefix + str(x) + ".jpg", images[x])
+                    cv2.imwrite(prefix + str(x) + filetype, images[x])
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
