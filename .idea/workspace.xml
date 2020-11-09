@@ -46,7 +46,7 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="JupyterTrust" id="cdf6fa61-bd02-40cc-a2fb-7322d13be455" />
+  <component name="JupyterTrust" id="cc74cf46-0453-4bdf-87ab-71e17ba8e357" />
   <component name="ProjectId" id="1iaSExOF46c52JJlTHukxinV89T" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -228,26 +228,26 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="549" y="167" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1602242455118" />
-    <state width="1493" height="223" key="GridCell.Tab.0.bottom" timestamp="1604055876570">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom" timestamp="1604913608240">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1604055876570" />
-    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1603971950846" />
-    <state width="1493" height="223" key="GridCell.Tab.0.center" timestamp="1604055876570">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.bottom/0.0.1920.1040@0.0.1920.1040" timestamp="1604913608240" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center" timestamp="1604913608239">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1604055876570" />
-    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1603971950846" />
-    <state width="1493" height="223" key="GridCell.Tab.0.left" timestamp="1604055876570">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.center/0.0.1920.1040@0.0.1920.1040" timestamp="1604913608239" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left" timestamp="1604913608239">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1604055876570" />
-    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1603971950845" />
-    <state width="1493" height="223" key="GridCell.Tab.0.right" timestamp="1604055876570">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state width="1877" height="282" key="GridCell.Tab.0.left/0.0.1920.1040@0.0.1920.1040" timestamp="1604913608239" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right" timestamp="1604913608239">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state width="1493" height="223" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1604055876570" />
-    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1603971950846" />
+    <state width="1877" height="282" key="GridCell.Tab.0.right/0.0.1920.1040@0.0.1920.1040" timestamp="1604913608239" />
     <state x="184" y="86" key="MergeDialog" timestamp="1604408342803">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
@@ -270,10 +270,11 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="586" y="326" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.1536.824@0.0.1536.824" timestamp="1604061570459" />
-    <state x="431" y="145" width="672" height="678" key="search.everywhere.popup" timestamp="1602841315513">
-      <screen x="0" y="0" width="1536" height="824" />
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup" timestamp="1604915335746">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1602841315513" />
+    <state x="539" y="183" width="840" height="856" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1604915335746" />
     <state x="382" y="271" key="vcs.ApplyPatchDifferentiatedDialog" timestamp="1604408213076">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

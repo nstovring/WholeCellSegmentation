@@ -49,6 +49,11 @@ class Utility2():
             smoothImages.append(smoothed_image)
             mg_eq = self.histogram_equalization(smoothed_image)
 
+            grayImg = self.grayscaleImages([smoothed_image])
+
+            clahe = cv2.createCLAHE(clipLimit=3.0, tileGridSize=(8, 8))
+            mg_eq = clahe.apply(grayImg[0])
+
             eqImages.append(mg_eq)
             # final_image= cv2.hconcat([final_image,fimg])
 
