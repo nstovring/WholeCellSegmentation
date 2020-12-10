@@ -4,6 +4,8 @@ import cv2
 import  matplotlib.pyplot as plt
 import os
 
+import tqdm
+
 root_dir = os.path.abspath("../")
 class Utility2():
     def __init__(self):
@@ -13,6 +15,7 @@ class Utility2():
 
         images = []
         imagePaths = os.listdir(".."+path)
+        print(imagePaths)
         for x in imagePaths:
             img = cv2.imread(root_dir + path + "/" + x)
             images.append(img)
@@ -280,8 +283,6 @@ class Utility2():
                     cv2.imwrite(prefix + str(x) + filetype, cv2.resize(images[x], scale))
                 else:
                     cv2.imwrite(prefix + str(x) + filetype, images[x])
-        cv2.waitKey(0)
-        cv2.destroyAllWindows()
 
     def mergeImages(self, images, index1, index2, ratio):
         output = []
